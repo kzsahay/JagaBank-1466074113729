@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html ng-app="app1">
+<head>
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script>
+
+        function appendText() {
+
+            var txt1 = "<p>Text.</p>";              // Create text with HTML
+            var txt2 = $("<p></p>").text("Text.");  // Create text with jQuery
+            var txt3 = document.createElement("p");
+            txt3.innerHTML = "Text.";               // Create text with DOM
+            $("body").append(txt1, txt2, txt3);     // Append new elements
+        }
+        $(document).ready(function(){
+            //appendText();
+            $("#homebtn").click(function(){
+                $("#propbtn").slideToggle("fast");
+                $("#fincbtn").slideToggle("fast");
+                $("#furnbtn").slideToggle("fast");
+                $("#intrbtn").slideToggle("fast");
+                $("#expbtn").slideToggle("fast");
+
+            });
+
+            $("#propbtn").click(function(){
+                $(".content").show("fast");
+                $("#proplist").show("fast");
+                $(".content1").hide();
+            });
+            $("#fincbtn").click(function(){
+                $(".content1").show("fast");
+                $("#proplist").show("fast");
+                $(".content").hide();
+            });
+
+        });
+    </script>
+</head>
+<body>
+
+
+<div class="smain">
+    <div class="logo">
+        <img src="/images/jagalogo.png" alt="this is the not the image" style="height:85px ;width:80px"/>
+        We show ways
+    </div>
+    <div class="header">
+        <p style="float:left;">welcome ujwala <a href="www.google.com"> logout</a></p>
+        <div class="divhead">
+            <input id="searchbtn" type="button" value="search">
+            <input id="searchbox1" type="search" name="googlesearch" value="Bangalore">
+
+        </div>
+    </div>
+    <div class="leftpanel">
+        <button id="homebtn" class="btn">HOME</button>
+        <button id="propbtn" >PROPERTY LIST</button>
+        <!--<button id="fincbtn" style="background-color: #0000FF;border: 1px solid gray;border-color:white;color: white;height:60px;width:235px;text-decoration: none;display: inline-block;font-size: 14px;cursor:pointer;display:none">FINANCING OPTIONS</button>
+        <button id="furnbtn" style="background-color: #0000FF;border: 1px solid gray;border-color:white;color: white;height:60px;width:235px;text-decoration: none;display: inline-block;font-size: 14px;cursor:pointer;display:none">HOME FURNISHING</button>
+        <button id="intrbtn" style="background-color: #0000FF;border: 1px solid gray;border-color:white;color: white;height:60px;width:235px;font-size: 14px;cursor:pointer;display:none">INTERIOR DESIGNERS</button>
+        <button id="expbtn"  style="background-color: #0000FF;border: 1px solid gray;border-color:white;color: white;height:60px;width:235px;text-decoration: none;display: inline-block;font-size: 14px;cursor:pointer;display:none">EXPERT ADVICE</button>-->
+        <button id="cntbtn" class="btn">CONTACT</button>
+        <button id="discbtn" class="btn">DISCOVER</button>
+        <button id="profbtn" class="btn">MY PROFILE</button>
+
+    </div>
+    <div class="maincontent" ng-controller="cntrl1">
+        <div id="propdiv">
+            <p id="proplist" style="display:none">Property Lists</p>
+        </div>
+        <div class="content">
+            <ul id="ulid"  ng-repeat="list in proplist">
+                <!--<% for(var i=0; i<Object.keys(propertyDetails1.property1).length; i++){%>-->
+                <li id="firstli">
+                    <div id="divimg">
+                        <img id="imghome" src="/images/Homw1.jpg" >
+                    </div>
+                    <div id="divdetails" >
+                        <p>3BHK Apartment-80 Lacs<br>in Kormanagala</p>
+                        <p>Staus : Ready to move(Resale),Freehold</p>
+                        <p>Details : 1500 sq.ft</p>
+
+                        <!--<p><%= propertyDetails1.property1[i].address %></p>
+                        <p><%= propertyDetails1.property1[i].status %></p>
+                        <p><%= propertyDetails1.property1[i].details %></p>-->
+                    </div>
+                    <div id="divcontact">
+                        <input id="viewcontbtn" type="button"  value="View Contact"><br>
+                        <input id="callownerbtn" type="button"   value="Call Owner">
+                    </div>
+                    <div style="float: none; clear: both;"></div>
+                </li><br>
+               <!-- <%}%>-->
+                <!--<li id="secondli" style="border:1px solid black;display:none">
+                <div style="float: left;">
+                    <img src="/images/Home2.jpg" style="height:160px ;width:188px" >
+                </div>
+                <div style="float: left">
+                    <p>3BHK Apartment-80 Lacs<br>in Kormangala</p>
+                    <p>Staus : Ready to move(Resale),Freehold</p>
+                    <p>Details : 1500 sq.ft</p>
+                </div>
+                <div style="float: right">
+                    <input type="button" style="padding:10px;margin:10px;height:80%;width:80%" value="View Contact"><br>
+                    <input type="button" style="padding:10px;margin:10px;height:80%;width:80%"  value="Call Owner">
+                </div>
+                <div style="float: none; clear: both;"></div>
+            </li><br>
+            <li  id="thirdli" style="border:1px solid black;display:none">
+                <div style="float: left;">
+                    <img src="/images/Home3.jpg" style="height:160px ;width:188px" >
+                </div>
+                <div style="float: left">
+                    <p>3BHK Apartment-80 Lacs<br>in Kormangala</p>
+                    <p>Staus : Ready to move(Resale),Freehold</p>
+                    <p>Details : 1500 sq.ft</p>
+                </div>
+                <div style="float: right">
+                    <input type="button" style="padding:10px;margin:10px;height:80%;width:80%" value="View Contact"><br>
+                    <input type="button" style="padding:10px;margin:10px;height:80%;width:80%"  value="Call Owner">
+                </div>
+                <div style="float: none; clear: both;"></div>
+            </li>-->
+            </ul>
+        </div>
+        <div class="content1">
+            <ul id="ulid" style="list-style-type:none;background-color:#CCCCFF">
+                <li id="firstli"  style="border:1px solid black">
+                    <div style="float: left;">
+                        <img src="/images/Homw1.jpg" style="height:160px ;width:188px" >
+                    </div>
+                    <div style="float: left;">
+                        <p>3BHK Apartment-80 Lacs<br>in Kormanagala</p>
+                        <p>Staus : Ready to move(Resale),Freehold</p>
+                        <p>Details : 1500 sq.ft</p>
+                    </div>
+                    <div style="float: right">
+                        <input type="button" style="padding:10px;margin:10px;height:80%;width:80%" value="View Contact"><br>
+                        <input type="button" style="padding:10px;margin:10px;height:80%;width:80%"  value="Call Owner">
+                    </div>
+                    <div style="float: none; clear: both;"></div>
+                </li><br>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+</body>
+</html>

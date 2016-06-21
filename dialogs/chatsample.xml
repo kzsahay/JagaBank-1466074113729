@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dialog xsi:noNamespaceSchemaLocation="WatsonDialogDocument_1.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<flow>
+        <folder label="Main">
+			<output>
+				<prompt selectionType="RANDOM">
+					<item>Welcome to Jaga Bank! </item>
+				</prompt>
+                <output>
+                    <prompt selectionType="RANDOM">
+                        <item>May I know your name?</item>
+                    </prompt>
+                        <getUserInput>
+                            <input>
+                                <grammar>
+                                    <item>*</item>
+                                </grammar>
+                                <action varName="pname" operator="SET_TO_USER_INPUT"/>
+                                    <output>
+                        <prompt selectionType="RANDOM">
+                            <item>Dear {pname}. Let me ask you few questions to help me guide you better</item>
+                        </prompt>
+                            <output id="emptyp">
+                                <prompt selectionType="SEQUENTIAL">
+                                    <item>Are you a salaried employee or self employed?</item>								
+                                </prompt>
+                                <getUserInput>
+                                    <input>
+                                        <grammar>
+                                            <item>self-employed</item>
+                                            <item>self</item>
+                                            <item>salaried</item>
+                                        </grammar>
+                                        <action varName="emp" operator="SET_TO_USER_INPUT"/>									
+                                             <output>
+                                                        <prompt selectionType="RANDOM">
+                                                            <item>{emp}.Which sector you are currently engaged?</item>
+                                                        </prompt>
+                                                         <getUserInput>
+                                                            <input>
+                                                                <grammar>
+                                                                    <item>online education</item>
+                                                                    <item>teaching</item>
+                                                                    <item>fincance</item>
+                                                                    <item>it sector</item>
+                                                                    <item>it</item>
+                                                                    <item>online</item>
+                                                                </grammar>
+                                                              <action varName="var_sector" operator="SET_TO_USER_INPUT"/>	
+                                                              <output>
+                                                                <prompt selectionType="RANDOM">
+                                                                    <item>{var_sector}How many years you are in Business?</item>
+                                                                </prompt>
+                                                                <getUserInput>
+                                                                    <input>
+                                                                        <grammar>
+                                                                            <item>! \d{1}</item>
+                                                                        </grammar>
+                                                                        <action varName="var_years" operator="SET_TO_USER_INPUT"/>
+                                                                        <output>
+                                                                             <prompt selectionType="RANDOM">
+                                                                                    <item>{var_years}. I am working on ?</item>
+                                                                            </prompt>
+                                                                            <getUserInput>
+                                                                                <input>
+                                                                                    <grammar>
+                                                                                        <item>EduOnline</item>
+                                                                                        <item>teaching</item>
+                                                                                        <item>fincance</item>
+                                                                                        <item>it sector</item>
+                                                                                        <item>it</item>
+                                                                                        <item>online</item>
+                                                                                    </grammar>
+                                                                                    <action varName="var_sec" operator="SET_TO_USER_INPUT"/>
+                                                                                    <output>
+                                                                                        <prompt selectionType="RANDOM">
+                                                                                            <item>{var_sec}.MY monthly income?</item>
+                                                                                        </prompt> 
+                                                                                        <getUserInput>
+                                                                                            <input>
+                                                                                                <grammar>
+                                                                                                    <item>! \d{1}</item>
+                                                                                                    <item>! \d{2}</item>
+                                                                                                    <item>! \d{3}</item>
+                                                                                                    <item>! \d{4}</item>
+                                                                                                    <item>! \d{5}</item>
+                                                                                                    <item>! \d{6}</item>
+                                                                                                </grammar>
+                                                                                                <action varName="var_income" operator="SET_TO_USER_INPUT"/>
+                                                                                                <output>
+                                                                                                <prompt selectionType="RANDOM">
+                                                                                                    <item>{var_income}.My House budget?</item>
+                                                                                                </prompt>
+                                                                                                <getUserInput>
+                                                                                                    <input>
+                                                                                                        <grammar>
+                                                                                                                <item>! \d{5}</item>
+                                                                                                                <item>! \d{6}</item>
+                                                                                                                <item>! \d{7}</item>
+                                                                                                                <item>! \d{8}</item>
+                                                                                                                <item>! \d{9}</item>
+                                                                                                        </grammar>
+                                                                                                        <action varName="var_budget" operator="SET_TO_USER_INPUT"/>
+                                                                                                        <output>
+                                                                                                            <prompt selectionType="RANDOM">
+                                                                                                                <item>{var_budget}</item>                                                                                                           
+                                                                                                            </prompt>
+                                                                                                             <goto ref="demo_cal01"/>
+                                                                                                        </output>
+                                                                                                    </input>
+                                                                                                </getUserInput>
+                                                                                                </output>
+                                                                                            </input>
+                                                                                        </getUserInput>    
+                                                                                    </output>        
+                                                                                </input>
+                                                                            </getUserInput>    
+                                                                        </output>
+                                                                     </input>
+                                                                 </getUserInput>
+                                                               </output>
+                                                             </input>
+                                                          </getUserInput>
+                                                    </output>
+                                                </input>
+                                                <input>
+                                                    <grammar>
+                                                        <item>*</item>                                            
+                                                    </grammar>
+                                                    <action varName="emp" operator="SET_TO">nothing</action>									
+                                                    <output>
+                                                         <item>you have entered wrong input</item>
+                                                         <goto ref="emptyp" />
+                                                    </output>
+                                                </input>
+                                               
+                                            </getUserInput>
+                                        </output>
+                                </output>
+                             </input>
+                        </getUserInput>
+                   
+                 
+                </output>
+			</output>
+            
+        </folder>
+        <folder label="Live Content" id="demo_cal01">			
+                <output>
+					<prompt selectionType="SEQUENTIAL">
+						<item>Based on the information you have provided to us. we are redirecting you to a page </item>								
+					</prompt>					
+				</output>				
+            
+		</folder>
+    </flow>
+    <variables>
+			<var_folder name="Home">					
+				<var name="loan" type="TEXT" description="home loan details"/>
+				<var name="vehicle" type="TEXT" description="Type of vehicle like bike,car,2 wheeler,4 wheeler"/>
+				<var name="employer" type="TEXT" description="Type of employer like salaried,self,business"/>
+				<var name="personinfo" type="TEXT" description="Person information"/>
+				<var name="pname" type="TEXT" description="Person name"/>
+				<var name="emp" type="TEXT" description="Person employee type"/>
+				<var name="gender" type="TEXT" description="Person gender"/>
+				<var name="city" type="TEXT" description="Person city"/>				
+				<var name="state" type="TEXT" description="Person state"/>	
+				<var name="pincode" type="NUMBER" description="Person pincode"/>
+				<var name="loanyn" type="TEXT" description="loan type"/>
+				<var name="loantype" type="TEXT" description="Person city"/>
+				<var name="loantype1" type="TEXT" description="loan type"/>
+				<var name="mobileno" type="TEXT" description="Person mobileno"/>
+				<var name="propcost" type="TEXT" description="Persons property cost"/>
+				<var name="home_tenure" type="TEXT"/>
+				<var name="home_loan_amount" type="NUMBER"/>
+				<var name="vehicle_tenure" type="TEXT"/>
+				<var name="vehicle_model" type="TEXT"/>
+				<var name="vehicle_loan_amount" type="TEXT"/>
+				<var name="birth_date" type="TEXT"/>
+				<var name="monthly_income" type="TEXT"/>
+				<var name="current_emi" type="TEXT"/>
+				<var name="email_id" type="TEXT"/>
+				<var name="emp_type" type="TEXT"/>
+				<var name="emp_medical" type="TEXT"/>
+				<var name="home_vehicle_tenure" type="TEXT"/>
+				<var name="home_vehicle_loan_amount" type="TEXT"/>
+				<var name="demo_cal" type="TEXT"/>
+				<var name="medical_offer" type="TEXT"/>                
+                <var name="var_sector" type="TEXT"/>
+                <var name="var_years" type="TEXT"/>
+                <var name="var_sec" type="TEXT"/>
+                <var name="var_income" type="NUMBER"/>
+                <var name="var_budget" type="NUMBER"/>
+			</var_folder>
+		</variables>
+</dialog>

@@ -1,0 +1,140 @@
+@charset "UTF-8";
+body {
+    background-color: white !important;
+    margin: 100px 40px 10px 70px !important;
+}
+#header-top-wrap{
+    background-color: white;
+}
+h1 {
+    color: blue !important;
+}
+p {
+    color: green !important;
+}
+#headerright {
+    float: right;
+}
+#b01 {
+    float: right !important;
+    padding: 10px !important;
+}
+#p01 {
+    background-color: darkblue;
+    border: medium none;
+    color: white;
+    height: 45px;
+    width: 150px;
+}
+#b02 {
+    float: right;
+    padding: 10px;
+   
+}
+
+h2 span {
+    background: rgba(0, 0, 0, 0.7) none repeat scroll 0 0;
+    color: white;
+    font: bold 24px/45px Helvetica,sans-serif;
+    letter-spacing: -1px;
+    padding: 10px;
+}
+#footer-wrap {
+    opacity:0.5;
+    background-color: #00ccff;
+    color: white;
+    height: 180px;
+    text-align: center;
+}
+#textFooter {
+    color: white;
+    padding: 10px;
+    text-align: left;
+}
+.divider {
+    display: inline-block;
+    height: auto;
+    width: 150px;
+}
+._content--dialog {
+  margin-top: 2rem; }
+  @media (min-width: 768px) {
+    ._content--dialog {
+      opasity:0.5;  
+      width: 50%;
+      clear: right;
+      float: left;
+      padding-right: 2rem; } }
+.chat-window {
+  position: relative; }
+  .chat-window--message-input {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem; }
+
+
+.chat-box {
+  position: relative;
+  height: 20rem; }
+  .chat-box--pane {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    overflow-y: scroll;
+    height: 100%; }
+  .chat-box--item {
+    transition: 0.4s;
+    opacity: 1;
+    visibility: visible;
+    display: table;
+    width: 100%; }
+    .chat-box--item_WATSON {
+      background-color: #ececec; }
+      .chat-box--item_WATSON > * {
+        float: left; }
+    .chat-box--item_YOU {
+      background-color: #f4f4f4; }
+      .chat-box--item_YOU > * {
+        float: right; }
+    .chat-box--item_HIDDEN {
+      visibility: hidden;
+      opacity: 0;
+      transform: translateY(-40px); }
+  .chat-box--container {
+    display: table-row; }
+  .chat-box--avatar {
+    display: table-cell;
+    vertical-align: middle;
+    height: 5rem;
+    width: 5rem; }
+    .chat-box--avatar_WATSON {
+      background-color: #325c80; }
+    .chat-box--avatar_YOU {
+      background-color: #00B2EF; }
+  .chat-box--avatar-img {
+    width: 100%;
+    height: auto; }
+  .chat-box--message {
+    display: table-cell;
+    vertical-align: middle;
+    width: calc(100% - 80px);
+    min-height: 5rem;
+    margin-top: 0rem;
+    padding: 1rem; }
+    .chat-box--item_WATSON .chat-box--message {
+      background-color: #ececec; }
+    .chat-box--item_YOU .chat-box--message {
+      background-color: #f4f4f4;
+      text-align: right; }
+  .chat-box--message-vertical {
+    vertical-align: middle;
+    width: 100%; }
+  .chat-box--item_YOU .chat-box--message-text {
+    padding: 0.65rem 0rem; }
+
+
+.loader {
+  text-align: center; }
+._demo--container {
+    background-image:url("../images/jagaimage.png");
+    width: 760px;
+    margin: 0rem auto; }  

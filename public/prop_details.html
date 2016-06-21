@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/css/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link rel="stylesheet" href="style1.css">-->
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <!--<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <style>
+        .row {
+            margin-right: 85px;
+            margin-left: 0px;
+        }
+        #rcorners2 {
+            border-radius: 25px;
+            border: 2px solid #73AD21;
+            padding: 20px;
+            width: 200px;
+            height: 150px;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            var slideIndex = 1;
+            showDivs(slideIndex);
+
+            function plusDivs(n) {
+                showDivs(slideIndex += n);
+            }
+
+            function currentDiv(n) {
+                showDivs(slideIndex = n);
+            }
+
+            function showDivs(n) {
+                var i;
+                var x = document.getElementsByClassName("image-1");
+                var dots = document.getElementsByClassName("demo");
+                if (n > x.length) {slideIndex = 1}
+                if (n < 1) {slideIndex = x.length}
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";
+                }
+                for (i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(" w3-white", "");
+                }
+                x[slideIndex-1].style.display = "block";
+                dots[slideIndex-1].className += " w3-white";
+
+            }
+            var myIndex = 0;
+            carousel();
+
+            function carousel() {
+
+                var i;
+                var x = document.getElementsByClassName("image-1");
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";
+                }
+                myIndex++;
+                if (myIndex > x.length) {myIndex = 1}
+                x[myIndex-1].style.display = "block";
+                setTimeout(carousel, 2000); // Change image every 2 seconds
+            }
+        });
+    </script>
+    <style>
+        .mySlides {display:none}
+        .w3-left, .w3-right, .w3-badge {cursor:pointer}
+        .w3-badge {height:13px;width:13px;padding:0}
+    </style>
+</head>
+<body>
+
+
+<div class="main">
+    <div class="logo">
+        <img src="images/jagalogo.png" alt="this is the not the image" style="height:85px ;width:80px"/>
+        We show ways
+    </div>
+    <div class="header1">
+        <p style="float:left;">welcome ujwala <a href="www.google.com"> logout</a></p>
+        <div style="float:right;width:60%;margin-top:4px">
+            <input type="button" value="search" style="float:right;">
+            <input type="search" name="googlesearch" value="Bangalore"  style="width:50%;float:right;" >
+
+        </div>
+    </div>
+    <div class="leftpanel">
+        <button id="homebtn" style="background-color: #008CBA;border: 1px solid gray;border-color:white;color: white;height:60px;width:235px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;cursor:pointer" >HOME</button>
+        <button id="propbtn" style="background-color: #0000FF;border: 1px solid gray;border-color:white;color: white;height:60px;width:235px;font-size: 14px;cursor:pointer;text-decoration: none;display: none;">PROPERTY LIST</button>
+        <!--<button id="fincbtn" style="background-color: #0000FF;border: 1px solid gray;border-color:white;color: white;height:60px;width:235px;text-decoration: none;display: inline-block;font-size: 14px;cursor:pointer;display:none">FINANCING OPTIONS</button>
+        <button id="furnbtn" style="background-color: #0000FF;border: 1px solid gray;border-color:white;color: white;height:60px;width:235px;text-decoration: none;display: inline-block;font-size: 14px;cursor:pointer;display:none">HOME FURNISHING</button>
+        <button id="intrbtn" style="background-color: #0000FF;border: 1px solid gray;border-color:white;color: white;height:60px;width:235px;font-size: 14px;cursor:pointer;display:none">INTERIOR DESIGNERS</button>
+        <button id="expbtn"  style="background-color: #0000FF;border: 1px solid gray;border-color:white;color: white;height:60px;width:235px;text-decoration: none;display: inline-block;font-size: 14px;cursor:pointer;display:none">EXPERT ADVICE</button>-->
+        <button style="background-color: #008CBA;border: 1px solid gray;border-color:white;color: white;height:60px;width:235px;text-decoration: none;display: inline-block;font-size: 16px;cursor:pointer">CONTACT</button>
+        <button style="background-color: #008CBA;border: 1px solid gray;border-color:white;color: white;height:60px;width:235px;text-decoration: none;display: inline-block;font-size: 16px;cursor:pointer">DISCOVER</button>
+        <button style="background-color: #008CBA;border: 1px solid gray;border-color:white;color: white;height:60px;width:235px;text-decoration: none;display: inline-block;font-size: 16px;cursor:pointer">MY PROFILE</button>
+
+    </div>
+    <div class="maincontent">
+        <div style="background-color:#A4A4A4;height:31px;width:100%;float:right">
+
+        </div>
+        <div  style="height:254px;width:100%;float:right">
+            <img class="image-1" src="/images/image5_large.jpg" style="width:100%;height:90%;">
+            <img class="image-1" src="/images/image3_large.jpg" style="width:100%;height:90%;display:none">
+            <img class="image-1" src="/images/large1.jpg" style="width:100%;height:90%;display:none">
+            <img class="image-1" src="/images/balcony.jpg" style="width:100%;height:90%;display:none">
+            <div class="w3-center w3-section w3-large w3-text-white w3-display-bottomleft" style="width:100%">
+                <div class="w3-left w3-padding-left w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;</div>
+                <div class="w3-right w3-padding-right w3-hover-text-khaki" onclick="plusDivs(1)">&#10095;</div>
+                <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
+                <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
+                <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span>
+            </div>
+
+        </div>
+        <div class="table-container" style="margin-top:18%">
+            <div class="row" style="width:100%">
+                <div class="col-sm-10">
+                    <div class="table1" style="width:100%;margin-left:2%;border-radius: 5px;border: 2px solid #d3d3d3">
+                        <div class="row" style="background-color:lightgray; width:100%">
+                            <div class="col-sm-4">About</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <table>
+                                    <tr>
+                                        <td>Price:</td>
+                                        <td>0400/sq. ft</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Area:</td>
+                                        <td>1500 sq.ft</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-sm-6">
+                                <table>
+                                    <tr>
+                                        <td>Configuration:</td>
+                                        <td>3 bedroom and 2 bathrooms</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Facing:</td>
+                                        <td>South</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-sm-3">
+                                <table>
+                                    <tr>
+                                        <td>Floor details:</td>
+                                        <td>0th(out of 10)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Age:</td>
+                                        <td>2 yrs old</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="table2" style="width:100%;margin-top:2%;margin-left:2%;border-radius: 5px;border: 2px solid #d3d3d3">
+                        <div class="row" style="background-color:lightgray; width:100%">
+                            <div class="col-sm-4">Amenities</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="col-sm-2" style="width: 28.666667%">
+                                    <img src="/images/car.jpg" style="width:30px;height:30px;float:left"><br/>
+                                    Parking
+                                </div>
+                                <div class="col-sm-2" style="width: 28.666667%">
+                                    <img src="/images/lift.png" style="width:30px;height:30px;float:left"><br/>
+                                    Lift
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="col-sm-2" style="width: 28.666667%">
+                                    <img src="/images/solar.jpg" style="width:30px;height:30px;float:left"><br/>
+                                    Solar
+                                </div>
+                                <div class="col-sm-1" style="width: 35.333333%">
+                                    <img src="/images/swimming_pool.jpg" style="width:30px;height:30px;float:left"><br/>
+                                    Swimming pool
+                                </div>
+                                <div class="col-sm-1" style="width: 35.333333%">
+                                    <img src="/images/gym.jpg" style="width:30px;height:30px;float:left"><br/>
+                                    Gym
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="col-sm-2" style="width: 28.666667%">
+                                    <img src="/images/park.jpg" style="width:30px;height:30px;float:left"><br/>
+                                    Park
+                                </div>
+                                <div class="col-sm-1" style="width: 35.333333%">
+                                    <img src="/images/cctv.jpg" style="width:30px;height:30px;float:left"><br/>
+                                    CCTV
+                                </div>
+                                <div class="col-sm-1" style="width: 35.333333%">
+                                    <img src="/images/club.png" style="width:30px;height:30px;float:left"><br/>
+                                    Club
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="rightelement" style="width:100%;border-radius: 5px;border: 2px solid #d3d3d3">
+                        <div class="row">
+                            <img src="/images/progressbar.png" style="width: 113px;height: 99px;margin-left: 19px;">
+
+
+                        </div>
+                        <div class="row" style="width:100%">
+                            <p style="text-align: center">Daily needs</p>
+                        </div>
+
+                        <div class="row" style="width:100%">
+                            <div class="col-sm-6">
+                                <p style="text-align: center">School</p>
+                            </div>
+                            <div class="col-sm-6">
+                                <p style="text-align: center;border-radius: 5px;background: #73AD21">1 km</p>
+                            </div>
+
+                        </div>
+                        <div class="row" style="width:100%">
+                            <div class="col-sm-6">
+                                <p style="text-align: center">Marketing place</p>
+                            </div>
+                            <div class="col-sm-6">
+                                <p style="text-align: center;border-radius: 5px;background: #73AD21">1.5 km</p>
+                            </div>
+
+                        </div>
+                        <div class="row" style="width:100%">
+                            <div class="col-sm-6">
+                                <p style="text-align: center">Metro</p>
+                            </div>
+                            <div class="col-sm-6">
+                                <p style="text-align: center;border-radius: 5px;background: #73AD21">2 km</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="table-container" style="margin-top:10px">
+            <div class="col-sm-10">
+                <div class="row" style="width:100%;margin-left:2%">
+                    comment <br/>
+                    <hr style="margin-top: 0px">
+                </div>
+                <div class="row" style="width:100%;margin-left:2%">
+                    <button type="button" style="float:right">View old Comments</button>
+                </div>
+                <div class="row" style="width:100%;margin-left:2%">
+                    <table>
+                        <tr>
+                            <td rowspan="2" style="width:95px">
+                                <img src="/images/home-icon.png" style="width:50px;height:50px"/>
+                            </td>
+                            <td>
+                                Deepika Malhotra <br/>
+                                Hi there
+                            </td>
+                        </tr>
+
+                    </table>
+
+
+                </div>
+                <hr>
+                <div class="row" style="width:100%;margin-left:2%">
+                    <table>
+                        <tr>
+                            <td rowspan="2" style="width:95px">
+                                <img src="/images/home-icon.png" style="width:50px;height:50px"/>
+                            </td>
+                            <td>
+                                Deepika Malhotra <br/>
+                                Hi there
+                            </td>
+                        </tr>
+
+                    </table>
+
+
+                </div>
+                <br/>
+                <div class ="row">
+                    <div class="col-sm-10" style="width:95%">
+                        <input type="text" name="textfield" placeholder="Write comments" style="width:100%">
+                    </div>
+                    <div class="col-sm-2" style="width:5%">
+                        <input type="submit" value="Send">
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-sm-2">
+                <div class="rightelement" style="width:114%;border-radius: 5px;border: 2px solid #d3d3d3">
+                    <div class="row" style="background-color: lightgrey;width:100%">
+                        <p style="text-align: center">In touch</p>
+
+                    </div>
+
+
+                    <div class="row" style="margin-top: 10px;margin-bottom: 10px">
+                        <div class="col-sm-6">
+                            <img src="/images/cashbag.jpg" style="width:50px;height:50px"/><br/>
+                            <p style="text-align: center">Financing options</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <img src="/images/homefurnishing.jpg" style="width:50px;height:50px;margin-left: 30px"/><br/>
+                            <p style="text-align: center;margin-left: 28px">Home furnishing </p>
+                        </div>
+                    </div>
+                    <br/>
+                    <br/>
+                    <div class="row" style="margin-top: 10px;margin-bottom: 10px">
+                        <div class="col-sm-6">
+                            <img src="/images/interior.jpg" style="width:50px;height:50px"/><br/>
+                            <p style="text-align: center">Interior designers </p>
+                        </div>
+                        <div class="col-sm-6">
+                            <img src="/images/chat.png" style="width:50px;height:50px;margin-left: 30px"/><br/>
+                            <p style="text-align: center;margin-left: 28px">Expert advice</p>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+</body>
+</html>

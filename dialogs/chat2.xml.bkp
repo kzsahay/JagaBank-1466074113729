@@ -1,0 +1,1464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dialog xsi:noNamespaceSchemaLocation="WatsonDialogDocument_1.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<flow>
+        <folder label="Main">
+			<output>
+				<prompt selectionType="RANDOM">
+					<item>Welcome to Jaga Bank! </item>
+				</prompt>
+            <output>
+                <prompt selectionType="RANDOM">
+                    <item>May I know your name?</item>
+                </prompt>
+              <goto ref="getUserInput_2442994"/>
+            </output>
+			</output>
+            <output>
+                <getUserInput id="getUserInput_2442994">
+                    <search ref="folder_2442998"/>
+                    <default>
+                        <output>
+                            <prompt selectionType="RANDOM">
+                                <item>I'm sorry I did not understand your question.?></item>
+                                <item>I did not quite get that.</item>
+                                <item>I didnt grasp what you said.</item>
+                                <item>I'm not following you at the moment.</item>
+                            </prompt>
+                        </output>
+                    </default>
+                </getUserInput>
+            </output>
+        </folder>
+		<folder label="Library">				
+			<folder label="Live Content" id="folder_2442979">
+                <output>
+                    <prompt selectionType="RANDOM">
+                        <item>Sorry,you entered wrong input.</item>
+                    </prompt>
+					<goto ref="folder_2442900"/>
+                </output>
+            </folder>
+			<folder label="Live Content" id="folder_2442900">
+                <output>
+					<prompt selectionType="SEQUENTIAL">
+						<item>Which sector you are currently engaged?</item>								
+					</prompt>
+					<getUserInput>
+						<input>
+							<grammar>
+								<item>online education</item>
+								<item>teaching</item>
+                                <item>fincance</item>
+                                <item>it sector</item>
+                                <item>it</item>
+                                <item>online</item>
+							</grammar>
+							<action varName="var_sector" operator="SET_TO_USER_INPUT"/>
+                            <output>
+                                <item>{var_sector}</item>
+                            </output>
+							<goto ref="folder_2442901"/>
+						</input>
+						
+						<input>
+							<grammar>
+								<item>*</item>
+							</grammar>
+							<action varName="var_sector" operator="SET_TO">nothing</action>
+							<output>
+								<prompt>
+									<item>You have entered wrong input</item>
+								</prompt>
+								<goto ref="folder_2442979"/>
+							</output>
+						</input>
+					</getUserInput>
+				</output>
+            </folder>
+			<folder label="Live Content" id="folder_2442901">
+                <output id="folder_id100">
+					<prompt selectionType="SEQUENTIAL">
+						<item>How many years you are in Business?</item>
+					</prompt>
+					<getUserInput>
+						<input>
+							<grammar>
+								<item>! \d{1}</item>
+							</grammar>
+							<action varName="var_years" operator="SET_TO_USER_INPUT"/>								
+								<output>
+									<output id="folder_id101">
+										<prompt selectionType="SEQUENTIAL">
+											<item>I am Working with?</item>
+										</prompt>
+										<getUserInput>
+											<input>
+												<grammar>
+													<item>EduOnline</item>
+													<item>Finance</item>
+													<item>Teaching</item>
+													<item>online Education</item>
+													<item>it sector</item>
+													<item>it</item>
+												</grammar>
+												<action varName="var_sec" operator="SET_TO_USER_INPUT"/>
+													<output>
+														<output id="pincode01">															
+																<prompt selectionType="SEQUENTIAL">
+																	<item>What is your pincode?</item>
+																</prompt>
+																<getUserInput>
+																	<input>
+																		<grammar>
+																			<item>! \d{6}</item>																			
+																		</grammar>
+																		<action varName="pincode" operator="SET_TO_USER_INPUT"/>
+																			<output>
+																				<output id="folder_id102">
+																						<prompt selectionType="SEQUENTIAL">
+																							<item>Are you looking for a loan?</item>
+																						</prompt>
+																						<getUserInput>
+																							<input>
+																								<grammar>
+																									<item>y</item>																			
+																									<item>yes</item>
+																									<item>yep</item>																									
+																									<item>Y</item>
+																									<item>Yes</item>																									
+																									<item>YES</item>
+																								</grammar>
+																								<action varName="loanyn" operator="SET_TO_USER_INPUT"/>
+																									<output>
+																										<output id="loantype01">
+																												<prompt selectionType="SEQUENTIAL">
+																													<item>What type of loan you are looking for(Home,Vehicle or both)?</item>
+																												</prompt>
+																												<getUserInput>
+																													<input>
+																														<grammar>
+																															<item>home</item>																															
+																															<item>home loan</item>
+																															<item>house</item>																									
+																															<item>house loan</item>
+																															<item>property</item>																									
+																															<item>property loan</item>
+																															<item>prop</item>
+																															<item>flat</item>
+																															<item>appartment</item>
+																															<item>prop loan</item>
+																															<item>flat loan</item>
+																															<item>appartment loan</item>
+																														</grammar>
+																														<action varName="loantype" operator="SET_TO">home</action>
+																															<output>
+																																<output id="loantype101">
+																																		<prompt selectionType="SEQUENTIAL">
+																																			<item>Are you looking for a new loan or loan transfer?</item>
+																																		</prompt>
+																																		<getUserInput>
+																																			<input>
+																																				<grammar>
+																																					<item>new loan</item>	
+																																					<item>new one</item>
+																																					<item>transfer</item>
+																																					<item>loan transfer</item>																																					
+																																				</grammar>
+																																				<action varName="loantype1" operator="SET_TO_USER_INPUT"/>
+																																					<output>
+																																						<output id="propcost01">
+																																								<prompt selectionType="SEQUENTIAL">
+																																									<item>what is the cost of the property?</item>
+																																								</prompt>
+																																								<getUserInput>
+																																									<input>
+																																										<grammar>
+																																											<item>! \d{6}</item>
+																																											<item>! \d{7}</item>
+																																											<item>! \d{8}</item>
+																																											<item>! \d{9}</item>
+																																											<item>! \d{10}</item>
+																																											<item>! \d{11}</item>
+																																											<item>! \d{12}</item>
+																																											<item>! \d{1},\d{5}</item>
+																																											<item>! \d{2},\d{5}</item>
+																																											<item>! \d{3},\d{5}</item>
+																																											<item>! \d{4},\d{5}</item>
+																																											<item>! \d{5},\d{5}</item>
+																																										</grammar>
+																																										<action varName="propcost" operator="SET_TO_USER_INPUT"/>
+																																											<output>
+																																												<output id="home_tenure01">
+																																														<prompt selectionType="SEQUENTIAL">
+																																															<item>How much loan period your looking for?</item>
+																																														</prompt>
+																																														<getUserInput>
+																																															<input>
+																																																<grammar>
+																																																	<item>! \d{1}</item>
+																																																	<item>! \d{2}</item>
+																																																	<item>! \d{1} years</item>
+																																																	<item>! \d{1} years</item>
+																																																	<item>year</item>
+																																																	<item>two years</item>
+																																																	<item>three years</item>
+																																																	<item>four years</item>
+																																																	<item>five years</item>
+																																																	<item>ten years</item>
+																																																	<item>fifteen years</item>
+																																																	<item>twenty years</item>
+																																																	<item>twenty five years</item>
+																																																	<item>thirty years</item>
+																																																	<item>one</item>
+																																																	<item>two</item>
+																																																	<item>three</item>
+																																																	<item>four</item>
+																																																	<item>five</item>
+																																																	<item>ten</item>
+																																																	<item>fifteen</item>
+																																																	<item>twenty</item>
+																																																	<item>twenty five</item>
+																																																	<item>thirty</item>
+																																																</grammar>
+																																																<action varName="home_tenure" operator="SET_TO_USER_INPUT"/>
+																																																	<output>
+																																																		<output id="home_loan_amount01">
+																																																				<prompt selectionType="SEQUENTIAL">
+																																																					<item>How much loan are you looking for?</item>
+																																																				</prompt>
+																																																				<getUserInput>
+																																																					<input>
+																																																						<grammar>
+																																																							<item>! \d{6}</item>
+																																																							<item>! \d{7}</item>
+																																																							<item>! \d{8}</item>
+																																																							<item>! \d{9}</item>
+																																																							<item>! \d{10}</item>
+																																																							<item>! \d{11}</item>
+																																																							<item>! \d{12}</item>
+																																																							<item>! \d{1},\d{5}</item>
+																																																							<item>! \d{2},\d{5}</item>
+																																																							<item>! \d{3},\d{5}</item>
+																																																							<item>! \d{4},\d{5}</item>
+																																																							<item>! \d{5},\d{5}</item>	
+																																																							<item>! \d{1} lacs</item>
+																																																							<item>! \d{2} lacs</item>
+																																																							<item>! \d{1} crore</item>
+																																																							<item>! \d{2} crore</item>
+																																																							<item>crore</item>
+																																																							<item>lakh</item>
+																																																							<item>five lacs</item>
+																																																							<item>ten lacs</item>
+																																																							<item>fifteen lacs</item>
+																																																							<item>twenty lacs</item>
+																																																							<item>twenty five lacs</item>
+																																																							<item>thirty lacs</item>
+																																																							<item>thirty five lacs</item>
+																																																							<item>fourty lacs</item>
+																																																							<item>fourty five lacs</item>
+																																																							<item>fifty lacs</item>
+																																																							<item>fifty crore</item>
+																																																							<item>ten crore</item>
+																																																						</grammar>
+																																																						<action varName="home_loan_amount" operator="SET_TO_USER_INPUT"/>
+																																																							<output>
+																																																								<goto ref="folder_id103"/>
+																																																							</output>
+																																																					</input>
+																																																					<input>
+																																																						<grammar>
+																																																							<item>*</item>
+																																																						</grammar>
+																																																						<action varName="home_tenure" operator="SET_TO">nothing</action>
+																																																							<output>
+																																																								<prompt selectionType="RANDOM">
+																																																									<item>you have entered wrong input.</item>
+																																																								</prompt>
+																																																								<goto ref="home_tenure01"/>
+																																																							</output>
+																																																					</input>
+																																																				</getUserInput>
+																																																			</output>
+																																																	</output>
+																																															</input>
+																																															<input>
+																																																<grammar>
+																																																	<item>*</item>
+																																																</grammar>
+																																																<action varName="home_tenure" operator="SET_TO">nothing</action>
+																																																	<output>
+																																																		<prompt selectionType="RANDOM">
+																																																			<item>you have entered wrong tenure.</item>
+																																																		</prompt>
+																																																		<goto ref="home_tenure01"/>
+																																																	</output>
+																																															</input>
+																																														</getUserInput>
+																																													</output>
+																																											</output>
+																																									</input>
+																																									<input>
+																																										<grammar>
+																																											<item>*</item>
+																																										</grammar>
+																																										<action varName="propcost" operator="SET_TO">nothing</action>
+																																											<output>
+																																												<prompt selectionType="RANDOM">
+																																													<item>Please enter cost in digit without any comma(,).</item>
+																																												</prompt>
+																																												<goto ref="propcost01"/>
+																																											</output>
+																																									</input>
+																																								</getUserInput>
+																																							</output>
+																																					</output>
+																																			</input>
+																																			<input>
+																																				<grammar>
+																																					<item>*</item>
+																																				</grammar>
+																																				<action varName="loantype1" operator="SET_TO">nothing</action>
+																																					<output>
+																																						<prompt selectionType="RANDOM">
+																																							<item>Sorry couldn't get you.</item>
+																																						</prompt>
+																																						<goto ref="loantype101"/>
+																																					</output>
+																																			</input>
+																																		</getUserInput>
+																																	</output>
+																															</output>
+																													</input>
+																													<input>
+																														<grammar>
+																															<item>car loan</item>																			
+																															<item>2 wheeler loan</item>
+																															<item>4 wheeler loan</item>																									
+																															<item>scooter loan</item>
+																															<item>bike loan</item>																									
+																															<item>vehicle loan</item>
+																															<item>car</item>																			
+																															<item>2 wheeler</item>
+																															<item>4 wheeler</item>																									
+																															<item>scooter</item>
+																															<item>bike</item>																									
+																															<item>vehicle</item>
+																															<item>two wheeler</item>
+																															<item>four wheeler</item>
+																															<item>two wheeler loan</item>
+																															<item>four wheeler loan</item>																																
+																														</grammar>
+																														<action varName="loantype" operator="SET_TO">vehicle</action>
+																															<output>
+																																<output id="vehicle_model01">
+																																		<prompt selectionType="SEQUENTIAL">
+																																			<item>what is the Model/Brand of the vehicle?</item>
+																																		</prompt>
+																																		<getUserInput>
+																																			<input>
+																																				<grammar>
+																																					<item>honda</item>	
+																																					<item>maruti</item>
+																																					<item>toyota</item>
+																																					<item>ford</item>
+																																				</grammar>
+																																				<action varName="vehicle_model" operator="SET_TO_USER_INPUT"/>
+																																					<output>
+																																						<output id="vehicle_tenure01">
+																																								<prompt selectionType="SEQUENTIAL">
+																																									<item>How many years loan period your looking for?</item>
+																																								</prompt>
+																																								<getUserInput>
+																																									<input>
+																																										<grammar>
+																																											<item>! \d{1}</item>	
+																																											<item>! \d{2}</item>																																											
+																																											<item>! \d{1} years</item>
+																																											<item>! \d{1} years</item>
+																																											<item>year</item>
+																																											<item>two years</item>
+																																											<item>three years</item>
+																																											<item>four years</item>
+																																											<item>five years</item>
+																																											<item>ten years</item>
+																																											<item>fifteen years</item>
+																																											<item>twenty years</item>
+																																											<item>twenty five years</item>
+																																											<item>thirty years</item>
+																																											<item>one</item>
+																																											<item>two</item>
+																																											<item>three</item>
+																																											<item>four</item>
+																																											<item>five</item>
+																																											<item>ten</item>
+																																											<item>fifteen</item>
+																																											<item>twenty</item>
+																																											<item>twenty five</item>
+																																											<item>thirty</item>
+																																										</grammar>
+																																										<action varName="vehicle_tenure" operator="SET_TO_USER_INPUT"/>
+																																											<output>
+																																												<output id="vehicle_loan_amount01">
+																																														<prompt selectionType="SEQUENTIAL">
+																																															<item>How much loan are you looking for?</item>
+																																														</prompt>
+																																														<getUserInput>
+																																															<input>
+																																																<grammar>
+																																																	<item>! \d{6}</item>
+																																																	<item>! \d{7}</item>
+																																																	<item>! \d{8}</item>
+																																																	<item>! \d{9}</item>
+																																																	<item>! \d{10}</item>
+																																																	<item>! \d{11}</item>
+																																																	<item>! \d{12}</item>
+																																																	<item>! \d{1},\d{5}</item>
+																																																	<item>! \d{2},\d{5}</item>
+																																																	<item>! \d{3},\d{5}</item>
+																																																	<item>! \d{4},\d{5}</item>
+																																																	<item>! \d{5},\d{5}</item>	
+																																																	<item>! \d{1} lacs</item>
+																																																	<item>! \d{2} lacs</item>
+																																																	<item>! \d{1} crore</item>
+																																																	<item>! \d{2} crore</item>
+																																																	<item>crore</item>
+																																																	<item>lakh</item>
+																																																	<item>five lacs</item>
+																																																	<item>ten lacs</item>
+																																																	<item>fifteen lacs</item>
+																																																	<item>twenty lacs</item>
+																																																	<item>twenty five lacs</item>
+																																																	<item>thirty lacs</item>
+																																																	<item>thirty five lacs</item>
+																																																	<item>fourty lacs</item>
+																																																	<item>fourty five lacs</item>
+																																																	<item>fifty lacs</item>
+																																																	<item>fifty crore</item>
+																																																	<item>ten crore</item>	
+																																																</grammar>
+																																																<action varName="vehicle_loan_amount" operator="SET_TO_USER_INPUT"/>
+																																																	<output>
+																																																		<goto ref="folder_id103"/>
+																																																	</output>
+																																															</input>
+																																															<input>
+																																																<grammar>
+																																																	<item>*</item>
+																																																</grammar>
+																																																<action varName="vehicle_loan_amount" operator="SET_TO">nothing</action>
+																																																	<output>
+																																																		<prompt selectionType="RANDOM">
+																																																			<item>you have entered wrong input.</item>
+																																																		</prompt>
+																																																		<goto ref="vehicle_loan_amount01"/>
+																																																	</output>
+																																															</input>
+																																														</getUserInput>
+																																													</output>
+																																											</output>
+																																									</input>
+																																									<input>
+																																										<grammar>
+																																											<item>*</item>
+																																										</grammar>
+																																										<action varName="vehicle_tenure" operator="SET_TO">nothing</action>
+																																											<output>
+																																												<prompt selectionType="RANDOM">
+																																													<item>you have entered wrong tenure.</item>
+																																												</prompt>
+																																												<goto ref="vehicle_tenure01"/>
+																																											</output>
+																																									</input>
+																																								</getUserInput>
+																																							</output>
+																																					</output>
+																																			</input>
+																																			<input>
+																																				<grammar>
+																																					<item>*</item>
+																																				</grammar>
+																																				<action varName="vehicle_model" operator="SET_TO">nothing</action>
+																																					<output>
+																																						<prompt selectionType="RANDOM">
+																																							<item>you have entered wrong model.</item>
+																																						</prompt>
+																																						<goto ref="vehicle_model01"/>
+																																					</output>
+																																			</input>
+																																		</getUserInput>
+																																										
+																																	</output>
+																															</output>
+																													</input>
+																													<input>
+																														<grammar>
+																															<item>both</item>
+																															<item>home,vehicle</item>																															
+																															<item>vehicle,home loan</item>
+																															<item>home,vehicle loan</item>																									
+																															<item>house,vehicle</item>
+																															<item>property,vehicle loan</item>
+																															<item>property,vehicle</item>																															
+																															<item>vehicle,property loan</item>
+																															<item>prop,vehicle</item>
+																															<item>flat,vehicle</item>
+																															<item>appartment,vehicle</item>
+																															<item>prop vehicle loan</item>
+																															<item>vehicle flat loan</item>
+																															<item>vehicle appartment loan</item>																															
+																														</grammar>
+																														<action varName="loantype" operator="SET_TO">both</action>
+																															<output id="loantype02">
+																																<output id="loantype102">
+																																		<prompt selectionType="SEQUENTIAL">
+																																			<item>Are you looking for a new loan or loan transfer?</item>
+																																		</prompt>
+																																		<getUserInput>
+																																			<input>
+																																				<grammar>
+																																					<item>new loan</item>	
+																																					<item>new one</item>
+																																					<item>transfer</item>
+																																					<item>loan transfer</item>																																					
+																																				</grammar>
+																																				<action varName="loantype1" operator="SET_TO_USER_INPUT"/>
+																																					<output>
+																																						<output id="propcost02">
+																																								<prompt selectionType="SEQUENTIAL">
+																																									<item>what is the cost of the property?</item>
+																																								</prompt>
+																																								<getUserInput>
+																																									<input>
+																																										<grammar>
+																																											<item>! \d{6}</item>
+																																											<item>! \d{7}</item>
+																																											<item>! \d{8}</item>
+																																											<item>! \d{9}</item>
+																																											<item>! \d{10}</item>
+																																											<item>! \d{11}</item>
+																																											<item>! \d{12}</item>
+																																											<item>! \d{1},\d{5}</item>
+																																											<item>! \d{2},\d{5}</item>
+																																											<item>! \d{3},\d{5}</item>
+																																											<item>! \d{4},\d{5}</item>
+																																											<item>! \d{5},\d{5}</item>
+																																										</grammar>
+																																										<action varName="propcost" operator="SET_TO_USER_INPUT"/>
+																																											<output>
+																																												<output id="vehicle_model02">
+																																														<prompt selectionType="SEQUENTIAL">
+																																															<item>what is the Model/Brand of the vehicle?</item>
+																																														</prompt>
+																																														<getUserInput>
+																																															<input>
+																																																<grammar>
+																																																	<item>honda</item>	
+																																																	<item>maruti</item>
+																																																	<item>toyota</item>
+																																																	<item>ford</item>
+																																																</grammar>
+																																																<action varName="vehicle_model" operator="SET_TO_USER_INPUT"/>
+																																																	<output>
+																																																		<output id="home_vehicle_tenure01">
+																																																				<prompt selectionType="SEQUENTIAL">
+																																																					<item>How many years loan period your looking for?</item>
+																																																				</prompt>
+																																																				<getUserInput>
+																																																					<input>
+																																																						<grammar>
+																																																							<item>! \d{1}</item>	
+																																																							<item>! \d{2}</item>																																											
+																																																							<item>! \d{1} years</item>
+																																																							<item>! \d{1} years</item>
+																																																							<item>year</item>
+																																																							<item>two years</item>
+																																																							<item>three years</item>
+																																																							<item>four years</item>
+																																																							<item>five years</item>
+																																																							<item>ten years</item>
+																																																							<item>fifteen years</item>
+																																																							<item>twenty years</item>
+																																																							<item>twenty five years</item>
+																																																							<item>thirty years</item>
+																																																							<item>one</item>
+																																																							<item>two</item>
+																																																							<item>three</item>
+																																																							<item>four</item>
+																																																							<item>five</item>
+																																																							<item>ten</item>
+																																																							<item>fifteen</item>
+																																																							<item>twenty</item>
+																																																							<item>twenty five</item>
+																																																							<item>thirty</item>
+																																																						</grammar>
+																																																						<action varName="home_vehicle_tenure" operator="SET_TO_USER_INPUT"/>
+																																																							<output>
+																																																								<output id="home_vehicle_loan_amount01">
+																																																										<prompt selectionType="SEQUENTIAL">
+																																																											<item>How much loan are you looking for?</item>
+																																																										</prompt>
+																																																										<getUserInput>
+																																																											<input>
+																																																												<grammar>
+																																																													<item>! \d{6}</item>
+																																																													<item>! \d{7}</item>
+																																																													<item>! \d{8}</item>
+																																																													<item>! \d{9}</item>
+																																																													<item>! \d{10}</item>
+																																																													<item>! \d{11}</item>
+																																																													<item>! \d{12}</item>
+																																																													<item>! \d{1},\d{5}</item>
+																																																													<item>! \d{2},\d{5}</item>
+																																																													<item>! \d{3},\d{5}</item>
+																																																													<item>! \d{4},\d{5}</item>
+																																																													<item>! \d{5},\d{5}</item>	
+																																																													<item>! \d{1} lacs</item>
+																																																													<item>! \d{2} lacs</item>
+																																																													<item>! \d{1} crore</item>
+																																																													<item>! \d{2} crore</item>
+																																																													<item>crore</item>
+																																																													<item>lakh</item>
+																																																													<item>five lacs</item>
+																																																													<item>ten lacs</item>
+																																																													<item>fifteen lacs</item>
+																																																													<item>twenty lacs</item>
+																																																													<item>twenty five lacs</item>
+																																																													<item>thirty lacs</item>
+																																																													<item>thirty five lacs</item>
+																																																													<item>fourty lacs</item>
+																																																													<item>fourty five lacs</item>
+																																																													<item>fifty lacs</item>
+																																																													<item>fifty crore</item>
+																																																													<item>ten crore</item>
+																																																												</grammar>
+																																																												<action varName="home_vehicle_loan_amount" operator="SET_TO_USER_INPUT"/>
+																																																													<output>
+																																																														<goto ref="folder_id103"/>
+																																																													</output>
+																																																											</input>
+																																																											<input>
+																																																												<grammar>
+																																																													<item>*</item>
+																																																												</grammar>
+																																																												<action varName="home_vehicle_loan_amount" operator="SET_TO">nothing</action>
+																																																													<output>
+																																																														<prompt selectionType="RANDOM">
+																																																															<item>you have entered wrong input.</item>
+																																																														</prompt>
+																																																														<goto ref="vehicle_loan_amount01"/>
+																																																													</output>
+																																																											</input>
+																																																										</getUserInput>
+																																																									</output>
+																																																							</output>
+																																																					</input>
+																																																					<input>
+																																																						<grammar>
+																																																							<item>*</item>
+																																																						</grammar>
+																																																						<action varName="home_vehicle_tenure" operator="SET_TO">nothing</action>
+																																																							<output>
+																																																								<prompt selectionType="RANDOM">
+																																																									<item>you have entered wrong tenure.</item>
+																																																								</prompt>
+																																																								<goto ref="home_vehicle_tenure01"/>
+																																																							</output>
+																																																					</input>
+																																																				</getUserInput>
+																																																			</output>
+																																																	</output>
+																																															</input>
+																																															<input>
+																																																<grammar>
+																																																	<item>*</item>
+																																																</grammar>
+																																																<action varName="vehicle_model" operator="SET_TO">nothing</action>
+																																																	<output>
+																																																		<prompt selectionType="RANDOM">
+																																																			<item>you have entered wrong model.</item>
+																																																		</prompt>
+																																																		<goto ref="vehicle_model02"/>
+																																																	</output>
+																																															</input>
+																																														</getUserInput>
+																																													</output>
+																																											</output>
+																																									</input>
+																																									<input>
+																																										<grammar>
+																																											<item>*</item>
+																																										</grammar>
+																																										<action varName="propcost" operator="SET_TO">nothing</action>
+																																											<output>
+																																												<prompt selectionType="RANDOM">
+																																													<item>Please enter cost in digit without any comma(,).</item>
+																																												</prompt>
+																																												<goto ref="propcost02"/>
+																																											</output>
+																																									</input>
+																																								</getUserInput>
+																																							</output>
+																																					</output>
+																																			</input>
+																																			<input>
+																																				<grammar>
+																																					<item>*</item>
+																																				</grammar>
+																																				<action varName="loantype1" operator="SET_TO">nothing</action>
+																																					<output>
+																																						<prompt selectionType="RANDOM">
+																																							<item>Sorry couldn't get you.</item>
+																																						</prompt>
+																																						<goto ref="loantype102"/>
+																																					</output>
+																																			</input>
+																																		</getUserInput>
+																																	</output>
+																															</output>
+																													</input>
+																													<input>
+																														<grammar>
+																															<item>*</item>
+																														</grammar>
+																														<action varName="loantype" operator="SET_TO">nothing</action>
+																															<output>
+																																<prompt selectionType="RANDOM">
+																																	<item>Sorry couldn't get you.</item>
+																																</prompt>
+																																<goto ref="loantype01"/>
+																															</output>
+																													</input>
+																												</getUserInput>
+																											</output>
+																									</output>
+																							</input>
+																							<input>
+																								<grammar>
+																									<item>nope</item>
+																									<item>n</item>
+																									<item>N</item>
+																									<item>No</item>
+																									<item>NO</item>
+																								</grammar>
+																								<action varName="loanyn" operator="SET_TO_USER_INPUT"/>
+																									<output>
+																										<prompt selectionType="RANDOM">
+																											<item>Okay,have a nice day...</item>
+																										</prompt>
+																									</output>
+																							</input>
+																							<input>
+																								<grammar>
+																									<item>*</item>
+																								</grammar>
+																								<action varName="loanyn" operator="SET_TO">nothing</action>
+																								<output>
+																									<prompt selectionType="RANDOM">
+																										<item>Sorry,you have entered wrong loan type.</item>
+																									</prompt>
+																									<goto ref="folder_id102"/>
+																								</output>
+																							</input>
+																						</getUserInput>																						
+																					</output>
+																			</output>
+																	</input>
+																	<input>
+																		<grammar>
+																			<item>*</item>
+																		</grammar>
+																		<action varName="pincode" operator="SET_TO">nothing</action>
+																		<output>
+																			<prompt selectionType="RANDOM">
+																				<item>you have entered wrong pincode.</item>
+																			</prompt>
+																			<goto ref="pincode01"/>
+																		</output>
+																	</input>
+																</getUserInput>															
+															</output>
+													</output>
+											</input>
+											<input>
+												<grammar>
+													<item>*</item>
+												</grammar>
+												<action varName="state" operator="SET_TO">nothing</action>
+												<output>
+													<prompt selectionType="RANDOM">
+														<item>you have entered wrong state.</item>
+													</prompt>
+													<goto ref="folder_id101"/>
+												</output>
+											</input>
+										</getUserInput>
+									</output>
+								</output>
+						</input>
+						<input>
+							<grammar>
+								<item>*</item>
+							</grammar>
+							<action varName="city" operator="SET_TO">nothing</action>
+							<output>
+								<prompt selectionType="RANDOM">
+									<item>you have entered wrong city.</item>
+								</prompt>
+								<goto ref="folder_id100"/>
+							</output>
+						</input>
+					</getUserInput>
+				</output>
+            </folder>
+            <folder label="Live Content" id="folder_2442998">
+				 <input>
+					<grammar>
+						<item>*</item>
+					</grammar>
+				<action varName="pname" operator="SET_TO_USER_INPUT"/>
+				<output>
+					<prompt selectionType="RANDOM">
+						<item>Dear {pname}. Let me ask you few questions to help me guide you better</item>
+					</prompt>
+						<output id="emptyp">
+							<prompt selectionType="SEQUENTIAL">
+								<item>Are you a salaried employee or self employed?</item>								
+							</prompt>
+							<getUserInput>
+                                <input>
+                                    <grammar>
+                                        <item>self-employed</item>
+                                        <item>self</item>
+                                        <item>salaried</item>
+				                    </grammar>
+                                    <action varName="emp" operator="SET_TO_USER_INPUT"/>									
+                                    <output>
+										<goto ref="folder_2442900"/>																				
+									</output>
+                                </input>
+								<input>
+									<grammar>
+										<item>*</item>
+										<item>self</item>
+										<item>salaried</item>
+										<item>self-employed</item>
+										<item>se</item>
+									</grammar>
+									<action varName="emp" operator="SET_TO">nothing</action>
+										<output>
+											<prompt selectionType="RANDOM">
+												<item>you have entered wrong Information.</item>
+											</prompt>
+											<goto ref="emptyp"/>
+										</output>
+								</input>
+							</getUserInput>
+						</output>
+				</output>
+				</input>
+			</folder>
+			<folder label="Live Content" id="folder_id103">
+                <output id="birth_date01">
+					<prompt selectionType="SEQUENTIAL">
+						<item>What is your date of birth?</item>								
+					</prompt>
+					<getUserInput>
+						<input>
+							<grammar>
+								<item>! \d{2}-\d{2}-\d{4}</item>
+								<item>! \d{2}/\d{2}/\d{4}</item>
+								<item>! \d{2}.\d{2}.\d{4}</item>
+								<item>! \d{4}-\d{2}-\d{2}</item>
+								<item>! \d{4}/\d{2}/\d{2}</item>
+								<item>! \d{4}.\d{2}.\d{2}</item>
+							</grammar>
+							<action varName="birth_date" operator="SET_TO_USER_INPUT"/>
+								<output>
+									<output id="monthly_income01">
+											<prompt selectionType="SEQUENTIAL">
+												<item>What is your monthly take home pay?</item>								
+											</prompt>
+											<getUserInput>
+												<input>
+													<grammar>
+														<item>! \d{5}</item>
+														<item>! \d{6}</item>
+														<item>! \d{7}</item>
+														<item>! \d{8}</item>
+														<item>! \d{9}</item>
+														<item>! \d{10}</item>
+														<item>! \d{2} thosands</item>
+														<item>! \d{1} lacs</item>
+														<item>! \d{2} lacs</item>
+														<item>INR ! \d{2} thosands</item>
+														<item>INR ! \d{2} lacs</item>
+														<item>INR ! \d{1} lacs</item>
+														<item>INR ! \d{5}</item>
+														<item>INR ! \d{6}</item>
+														<item>INR ! \d{7}</item>
+														<item>INR ! \d{8}</item>
+														<item>INR ! \d{9}</item>
+														<item>INR ! \d{10}</item>
+														<item>twent five thosands</item>
+														<item>thirty thosands</item>
+														<item>thirty five thosands</item>
+														<item>fourty thosands</item>
+														<item>fourty five thosands</item>
+														<item>fifty thosands</item>
+														<item>fifty five thosands</item>
+														<item>sixty thosands</item>
+														<item>seventy thosands</item>
+														<item>seventy five thosands</item>
+														<item>eighty thosands</item>
+														<item>eighty five thosands</item>
+														<item>ninty thosands</item>
+														<item>ninty five thosands</item>
+														<item>five lacs</item>
+														<item>ten lacs</item>
+														<item>fifteen lacs</item>
+														<item>twenty lacs</item>
+														<item>twenty five lacs</item>
+														<item>thirty lacs</item>
+														<item>thirty five lacs</item>
+														<item>fourty lacs</item>
+														<item>fourty five lacs</item>
+														<item>fifty lacs</item>
+													</grammar>
+													<action varName="monthly_income" operator="SET_TO_USER_INPUT"/>
+														<output>
+															<output id="current_emi01">
+																	<prompt selectionType="SEQUENTIAL">
+																		<item>What is the amount on EMIs currently being paid?</item>								
+																	</prompt>
+																	<getUserInput>
+																		<input>
+																			<grammar>
+																				<item>! \d{4}</item>
+																				<item>! \d{5}</item>
+																				<item>! \d{6}</item>
+																				<item>! \d{7}</item>
+																				<item>! \d{8}</item>
+																				<item>! \d{1} thosands</item>
+																				<item>! \d{2} thosands</item>
+																				<item>! \d{1} lacs</item>
+																				<item>INR ! \d{2} lacs</item>
+																				<item>INR ! \d{4}</item>
+																				<item>INR ! \d{5}</item>
+																				<item>INR ! \d{6}</item>
+																				<item>INR ! \d{7}</item>
+																				<item>INR ! \d{8}</item>
+																				<item>five thosands</item>
+																				<item>ten thosands</item>
+																				<item>fifteen thosands</item>
+																				<item>twent thosands</item>
+																				<item>twent five thosands</item>
+																				<item>thirty thosands</item>
+																				<item>thirty five thosands</item>
+																				<item>fourty thosands</item>
+																				<item>fourty five thosands</item>
+																				<item>fifty</item>
+																			</grammar>
+																			<action varName="current_emi" operator="SET_TO_USER_INPUT"/>
+																				<output>
+																					<output id="email_id01">
+																							<prompt selectionType="SEQUENTIAL">
+																								<item>May I know your email id?</item>								
+																							</prompt>
+																							<getUserInput>
+																								<input>
+																									<grammar>
+																										<item>! \w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*</item>
+																										<item>! ^([0-9a-zA-Z_\.\'\-]+)*@[0-9a-zA-Z\-]+[a-zA-Z\.]+$</item>
+																										<item>! ^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$ </item>
+																									</grammar>
+																									<action varName="email_id" operator="SET_TO_USER_INPUT"/>
+																										<output>
+																											<output id="emp_type01">
+																													<prompt selectionType="SEQUENTIAL">
+																														<item>Are you Salaried, Self Employed or Business?</item>								
+																													</prompt>
+																													<getUserInput>
+																														<input>
+																															<grammar>
+																																<item>salaried</item>
+																																<item>sal</item>
+																																<item>salary</item>
+																																<item>self</item>
+																																<item>self employed</item>
+																																<item>business</item>
+																																<item>private</item>
+																																<item>contractor</item>
+																																<item>shop</item>
+																																<item>owner</item>
+																															</grammar>
+																															<action varName="emp_type" operator="SET_TO_USER_INPUT"/>
+																																<output>
+																																	<output id="emp_medical01">
+																																			<prompt selectionType="SEQUENTIAL">
+																																				<item>Are you in medical profession?</item>								
+																																			</prompt>
+																																			<getUserInput>
+																																				<input>
+																																					<grammar>
+																																						<item>yes</item>
+																																						<item>y</item>
+																																						<item>doctor</item>
+																																						<item>medico</item>
+																																						<item>medical</item>
+																																						<item>physician</item>
+																																					</grammar>
+																																					<action varName="emp_medical" operator="SET_TO">y</action>
+																																						<output>
+																																							<output id="medical_offer01">
+																																									<prompt selectionType="SEQUENTIAL">
+																																										<item>Would you want to know of our doctor loan offering as well?</item>								
+																																									</prompt>
+																																									<getUserInput>
+																																										<input>
+																																											<grammar>
+																																												<item>yes</item>
+																																												<item>y</item>
+																																												<item>n</item>
+																																												<item>no</item>
+																																												<item>nope</item>
+																																												<item>yup</item>
+																																											</grammar>
+																																											<action varName="medical_offer" operator="SET_TO">y</action>
+																																											<action varName="demo_cal" operator="SET_TO" >eligible</action>
+																																												<output>
+																																													<goto ref="demo_cal01"/>
+																																												</output>
+																																										</input>
+																																										<input>
+																																											<grammar>
+																																												<item>*</item>
+																																											</grammar>
+																																											<action varName="medical_offer" operator="SET_TO">nothing</action>
+																																												<output>
+																																													<prompt selectionType="RANDOM">
+																																														<item>Sorry,i couldnt get you.</item>
+																																													</prompt>
+																																													<goto ref="medical_offer01"/>
+																																												</output>
+																																										</input>
+																																									</getUserInput>
+																																								</output>
+																																						</output>
+																																				</input>
+																																				<input>
+																																					<grammar>
+																																						<item>no</item>
+																																						<item>n</item>
+																																						<item>nope</item>
+																																					</grammar>
+																																					<action varName="emp_medical" operator="SET_TO">n</action>
+																																					<action varName="demo_cal" operator="SET_TO" >eligible</action>
+																																						<output>
+																																							<goto ref="demo_cal01"/>
+																																						</output>
+																																				</input>
+																																				<input>
+																																					<grammar>
+																																						<item>*</item>
+																																					</grammar>
+																																					<action varName="emp_medical" operator="SET_TO">nothing</action>
+																																						<output>
+																																							<prompt selectionType="RANDOM">
+																																								<item>Sorry,i couldnt get you.</item>
+																																							</prompt>
+																																							<goto ref="emp_medical01"/>
+																																						</output>
+																																				</input>
+																																			</getUserInput>
+																																		</output>
+																																</output>
+																														</input>
+																														<input>
+																															<grammar>
+																																<item>*</item>
+																															</grammar>
+																															<action varName="emp_type" operator="SET_TO">nothing</action>
+																																<output>
+																																	<prompt selectionType="RANDOM">
+																																		<item>Sorry,i couldnt get you.</item>
+																																	</prompt>
+																																	<goto ref="emp_type01"/>
+																																</output>
+																														</input>
+																													</getUserInput>
+																												</output>
+																										</output>
+																								</input>
+																								<input>
+																									<grammar>
+																										<item>*</item>
+																									</grammar>
+																									<action varName="email_id" operator="SET_TO">nothing</action>
+																										<output>
+																											<prompt selectionType="RANDOM">
+																												<item>you have entered wrong email id.</item>
+																											</prompt>
+																											<goto ref="email_id01"/>
+																										</output>
+																								</input>
+																							</getUserInput>
+																						</output>
+																				</output>
+																		</input>
+																		<input>
+																			<grammar>
+																				<item>*</item>
+																			</grammar>
+																			<action varName="current_emi" operator="SET_TO">nothing</action>
+																				<output>
+																					<prompt selectionType="RANDOM">
+																						<item>you have entered wrong input.</item>
+																					</prompt>
+																					<goto ref="current_emi01"/>
+																				</output>
+																		</input>
+																	</getUserInput>
+																</output>
+														</output>
+												</input>
+												<input>
+													<grammar>
+														<item>*</item>
+													</grammar>
+													<action varName="monthly_income" operator="SET_TO">nothing</action>
+														<output>
+															<prompt selectionType="RANDOM">
+																<item>you have entered wrong input.</item>
+															</prompt>
+															<goto ref="monthly_income01"/>
+														</output>
+												</input>
+											</getUserInput>
+										</output>
+								</output>
+						</input>
+						<input>
+							<grammar>
+								<item>*</item>
+							</grammar>
+							<action varName="birth_date" operator="SET_TO">nothing</action>
+								<output>
+									<prompt selectionType="RANDOM">
+										<item>you have entered wrong date of birth.</item>
+									</prompt>
+									<goto ref="birth_date01"/>
+								</output>
+						</input>						
+					</getUserInput>
+				</output>
+            </folder>
+			<folder label="Live Content" id="demo_cal01">			
+                <output>
+					<prompt selectionType="SEQUENTIAL">
+						<item>Based on the information you have provided to us. we are redirecting you to a page which will provide detailed information on our relevant products and allow you to apply for these online</item>								
+					</prompt>					
+				</output>				
+            </folder>
+		</folder>
+		
+	</flow>
+		<entities>
+			<entity name="Loan">
+				<value name="Home" value="Home">
+					<grammar>
+						<item>home</item>
+						<item>Property</item>
+						<item>house</item>
+					</grammar>
+				</value>				
+				<value name="Doctor" value="Doctor"/>
+			</entity>
+			<entity name="Vehicle">
+				<value name="vehicle" value="Vehicle">
+					<grammar>
+						<item>Vehicle</item>
+						<item>Two Wheeler</item>
+						<item>Four Wheeler</item>
+						<item>Car</item>
+						<item>Bike</item>
+					</grammar>
+				</value>
+			</entity>			
+			<entity name="Employer_Type">
+				<value name="Salaried" value="Salaried"/>			
+				<value name="Self_Employed" value="Self_Employed">
+					<grammar>
+						<item>self</item>
+						<item>self employed</item>
+						<item>self_employed</item>
+					</grammar>
+				</value>
+				<value name="Business" value="Business"/>
+			</entity>
+			<entity name="Person_Information">
+				<value name="Age" value="Age">
+					<grammar>
+						<item>22</item>
+						<item>23</item>
+						<item>24</item>
+						<item>25</item>
+						<item>26</item>
+						<item>27</item>
+						<item>28</item>
+						<item>29</item>
+						<item>30</item>
+						<item>31</item>
+						<item>32</item>
+						<item>33</item>
+						<item>34</item>
+						<item>35</item>
+						<item>36</item>
+					</grammar>
+				</value>
+				<value name="Gender" value="Gender">
+					<grammar>
+						<item>male</item>
+						<item>female</item>						
+					</grammar>
+				</value>
+				<value name="City" value="City">
+					<grammar>
+						<item>pune</item>
+						<item>bangalore</item>
+						<item>delhi</item>
+						<item>kolkatta</item>													
+					</grammar>
+				</value>
+				<value name="Mobile_no" value="Mobile_no"/>						
+			</entity>
+			<entity name="Profession">
+				<value name="Engineer" value="Engineer">
+					<grammar>
+						<item>Engineer</item>
+						<item>Automotive Engineer</item>
+						<item>Computer Engineer</item>
+						<item>Civil Engineer</item>
+						<item>Electrical Engineer</item>
+						<item>Mechanical Engineer</item>
+						<item>Chemical Engineer</item>
+						<item>Computer Software Engineer</item>
+						<item>Computer Hardware Engineer</item>
+						<item>Network Engineer</item>
+						<item>Biomedical Engineer</item>
+						<item>Aerospace Engineer</item>
+						<item>Environmental Engineer</item>
+						<item>Automobile Engineer</item>
+						<item>Financial Engineer</item>
+						<item>Electronic Engineer</item>
+						<item>Nuclear Engineer</item>
+						<item>Water Engineer</item>
+						<item>Marine Engineer</item>
+						<item>Biological Engineer</item>
+						<item>Agricultural Engineer</item>
+						<item>Biochemical Engineer</item>
+						<item>Industrial Engineer</item>
+						<item>Material Engineer</item>
+						<item>Brewing Engineer</item>
+						<item>Manufacturing Engineer</item>
+						<item>Telecommunications Engineer</item>
+						<item>Forensics Engineer</item>
+						<item>Mining Engineer</item>
+						<item>Ocean Engineer</item>
+						<item>Structural Engineer</item>
+					</grammar>
+				</value>
+				<value name="Doctor" value="Doctor">
+					<grammar>
+						<item>Doctor</item>
+						<item>Emergency Doctor</item>
+						<item>Family Doctor</item>
+						<item>General Doctor</item>
+					</grammar>
+				</value>
+
+				<value name="Lawyer" value="Lawyer">
+					<grammar>
+						<item>Lawyer</item>
+						<item>Civil Rights Lawyer</item>
+						<item>Criminal Defense Lawyer</item>
+						<item>Criminal Justice Lawyer</item>
+						<item>Admiralty Lawyer</item>
+						<item>Corporation Lawyer</item>
+						<item>Patent Lawyer</item>
+						<item>Probate Lawyer</item>
+						<item>Real Estate Lawyer</item>						
+					</grammar>
+				</value>
+				<value name="Administrator" value="Administrator">
+					<grammar>
+						<item>Administrator</item>
+						<item>Public Administrator</item>
+						<item>Business Administrator</item>
+						<item>Hospital Administrator</item>
+						<item>Office Administrator</item>
+						<item>Health services Administrator</item>					
+					</grammar>
+				</value>
+				<value name="Manager" value="Manager">
+					<grammar>
+						<item>Manager</item>
+						<item>Business Manager</item>
+						<item>Commercial Property Manager</item>
+						<item>Event Manager</item>
+						<item>Financial Manager</item>
+						<item>Hospitality Manager</item>
+						<item>IT Manager</item>
+						<item>Network Manager</item>
+						<item>Operations Manager</item>
+						<item>Product Manager</item>
+						<item>Program Manager</item>
+						<item>Project Manager</item>
+						<item>Pub Manager</item>
+						<item>Restaurant Manager</item>
+						<item>Risk Manager</item>
+						<item>Technical Manager</item>
+						<item>Wildlife Manager</item>
+						<item>Asset Manager</item>
+						<item>Cash Manager</item>
+						<item>Change Manager</item>
+						<item>Assistant Manager</item>
+						<item>Performance Managerv</item>
+						<item>Talent Manager</item>
+						<item>Technology Managerv</item>
+						<item>Distribution Manager</item>
+						<item>Factory Manager</item>
+						<item>Production Manager</item>
+						<item>Public Relations Managerv</item>
+						<item>Human Resources Manager</item>
+						<item>Document Manager</item>
+						<item>Information Systems Manager</item>
+						<item>Information Technology Manager</item>
+						<item>IT Project Managerv</item>
+						<item>Junior Project Manager</item>
+						<item>Health Information Manager</item>			
+					</grammar>
+				</value>
+				<value name="Accountant" value="Accountant">
+					<grammar>
+						<item>Accountant</item>
+						<item>Budget Accountant</item>
+						<item>Cost Accountant</item>
+						<item>Property Accountant</item>
+						<item>Systems Accountant</item>
+						<item>Tax Accountant</item>
+						<item>Information Clerk Accountant</item>
+						<item>Clerk Accountant</item>
+						<item>Adjustable Clerk Accountant</item>
+						<item>Public Accountant</item>
+						<item>Industrial Accountant</item>
+						<item>Private Accountant</item>
+						<item>Corporate Accountant</item>					
+					</grammar>
+				</value>
+				<value name="Business" value="Business"/>
+				<value name="Worker" value="Worker"/>
+			</entity>			
+		</entities>
+		<variables>
+			<var_folder name="Home">					
+				<var name="loan" type="TEXT" description="home loan details"/>
+				<var name="vehicle" type="TEXT" description="Type of vehicle like bike,car,2 wheeler,4 wheeler"/>
+				<var name="employer" type="TEXT" description="Type of employer like salaried,self,business"/>
+				<var name="personinfo" type="TEXT" description="Person information"/>
+				<var name="pname" type="TEXT" description="Person name"/>
+				<var name="emp" type="TEXT" description="Person employee type"/>
+				<var name="gender" type="TEXT" description="Person gender"/>
+				<var name="city" type="TEXT" description="Person city"/>				
+				<var name="state" type="TEXT" description="Person state"/>	
+				<var name="pincode" type="NUMBER" description="Person pincode"/>
+				<var name="loanyn" type="TEXT" description="loan type"/>
+				<var name="loantype" type="TEXT" description="Person city"/>
+				<var name="loantype1" type="TEXT" description="loan type"/>
+				<var name="mobileno" type="TEXT" description="Person mobileno"/>
+				<var name="propcost" type="TEXT" description="Persons property cost"/>
+				<var name="home_tenure" type="TEXT"/>
+				<var name="home_loan_amount" type="NUMBER"/>
+				<var name="vehicle_tenure" type="TEXT"/>
+				<var name="vehicle_model" type="TEXT"/>
+				<var name="vehicle_loan_amount" type="TEXT"/>
+				<var name="birth_date" type="TEXT"/>
+				<var name="monthly_income" type="TEXT"/>
+				<var name="current_emi" type="TEXT"/>
+				<var name="email_id" type="TEXT"/>
+				<var name="emp_type" type="TEXT"/>
+				<var name="emp_medical" type="TEXT"/>
+				<var name="home_vehicle_tenure" type="TEXT"/>
+				<var name="home_vehicle_loan_amount" type="TEXT"/>
+				<var name="demo_cal" type="TEXT"/>
+				<var name="medical_offer" type="TEXT"/>
+                
+                <var name="var_sector" type="TEXT"/>
+                <var name="var_years" type="TEXT"/>
+                <var name="var_sec" type="TEXT"/>
+			</var_folder>
+		</variables>
+		<settings>
+			<setting name="USERIDNUM" type="USER">759</setting>
+			<setting name="EMAIL" type="USER"></setting>
+			<setting name="PASSWORD" type="USER"></setting>
+			<setting name="FIRSTNAME" type="USER">IBM</setting>
+			<setting name="LASTNAME" type="USER">Watson</setting>
+			<setting name="COUNTRY" type="USER">USA</setting>
+			<setting name="STATE" type="USER">NY State</setting>
+			<setting name="CITY" type="USER">NY</setting>
+			<setting name="BDAY" type="USER">1</setting>
+			<setting name="BMONTH" type="USER">1</setting>
+			<setting name="BYEAR" type="USER">2000</setting>
+			<setting name="SEX" type="USER">Male</setting>
+			<setting name="DISPLAYNAME" type="USER">IBM Watson</setting>
+			<setting name="PROVIDESECURITYPASSWORD" type="USER">false</setting>
+			<setting name="SECURITYPASSWORD" type="USER"></setting>
+			<setting name="SHOWPERSPROFILE" type="USER">false</setting>
+			<setting name="USETYPE" type="USER">0</setting>
+			<setting name="DATEJOINED" type="USER">2015-08-07 16:27:53.281</setting>
+			<setting name="LASTLOGIN" type="USER">2015-08-07 16:27:53.281</setting>
+			<setting name="LOGINCOUNT" type="USER">0</setting>
+			<setting name="CREDIT" type="USER">100</setting>
+			<setting name="CONVCOUNT" type="USER">4</setting>
+			<setting name="PERSONALITYTYPEID" type="USER">0</setting>
+			<setting name="SHOWSENDMESSAGE" type="USER">true</setting>
+			<setting name="ACTIVATED" type="USER">true</setting>
+			<setting name="MESSENGEREMAIL" type="USER"></setting>
+			<setting name="MESSENGERPASSWORD" type="USER"></setting>
+			<setting name="SENDCHATEMAIL" type="USER">true</setting>
+			<setting name="SENDFAVEMAIL" type="USER">true</setting>
+			<setting name="CACHE" type="USER">true</setting>
+			<setting name="CLASSTYPE" type="USER">3</setting>
+			<setting name="AUTOLEARN" type="USER">false</setting>
+			<setting name="LANGUAGE" type="USER">EN</setting>
+			<setting name="RESPONSETIME" type="USER">-2</setting>
+			<setting name="MAXAUTOLEARNITEMS" type="USER">0</setting>
+			<setting name="NUMAUTOSETRELATED" type="USER">0</setting>
+			<setting name="TIMEZONEID" type="USER">Australia/Sydney</setting>
+			<setting name="AUTOSETRELATEDNODEID" type="USER">0</setting>
+			<setting name="RETURNTOCHATNODEID" type="USER">0</setting>
+			<setting name="INPUTMASKTYPE" type="USER">0</setting>
+			<setting name="NUMLOGINATTEMPTS" type="USER">0</setting>
+			<setting name="CONCEPTMATCHING" type="USER">0</setting>
+			<setting name="UI_COLOUR"></setting>
+			<setting name="USE_CONCEPTS">3</setting>
+			<setting name="AL_NONE_LABEL">None of the above</setting>
+			<setting name="ASR_RANDOM">true</setting>
+			<setting name="DYNAMIC_MESSAGING">false</setting>
+			<setting name="DOCBASE_NUM_RESULTS">3</setting>
+			<setting name="DOCBASE_DESC_LEN">250</setting>
+			<setting name="STATUS">0</setting>
+			<setting name="DEFAULT_DNR_RETURN_POINT_CANDIDATE">-1</setting>
+			<setting name="ENTITIES_SCOPE">3</setting>
+			<setting name="POSTNODEID"></setting>
+			<setting name="MULTISENT">0</setting>
+			<setting name="DNR_NODE_ID">-15</setting>
+			<setting name="CLEARCACHE">sd6pprd-dfd2 sd6pprd-1e75</setting>
+		</settings>
+		<specialSettings>
+			<specialSetting label="DNR Join Statement">
+				<variations/>
+			</specialSetting>
+		</specialSettings>
+</dialog>	
+</dialog>	
